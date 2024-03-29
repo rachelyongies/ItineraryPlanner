@@ -6,8 +6,9 @@ import { useState } from 'react'
 import {Button} from '@nextui-org/button'
 import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
 
-
-// Photo by <a href="https://unsplash.com/@neom?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">NEOM</a> on <a href="https://unsplash.com/photos/an-aerial-view-of-a-desert-with-rocks-and-sand-39n8YVSn0d4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+// Background Credits: 
+// Photo by <a href="https://unsplash.com/@emilianobar?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Emiliano Bar</a> on <a href="https://unsplash.com/photos/empire-state-building-kheTI8pIywU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  
   
 function App() {
 
@@ -35,11 +36,11 @@ function App() {
     <NextUIProvider>
       <div className='App'>
       <h2 className="space-mono-bold-italic">Travel Planner v1</h2>
-      <h4 className="roboto-mono-1" color="white">What should we do today?</h4>
+      <h4 className="roboto-mono-1">Let's Start</h4>
     
       <Tabs aria-label="Dynamic tabs" items={tabs} color="primary" className="roboto-mono-1" >
         {(item)=> (
-          <Tab key={item.id} title={item.title}color="purple-dark">
+          <Tab key={item.id} title={item.title}color="purple-dark" onClick={handleTabClick}>
           <Card>
             <CardBody>
               {item.content}  

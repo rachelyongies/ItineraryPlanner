@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import '../App.css'
 
-export default function ItineraryGenerator() {
+export default function TravelFits() {
 
     const [step, setStep] = useState(1);
     const [userData, setUserData] = useState({
@@ -17,7 +17,7 @@ export default function ItineraryGenerator() {
 
     const [generatedItinerary, setGeneratedItinerary] = useState("");
     
-    const API_KEY = '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';
+    const API_KEY = '';
 
     function getNextStepQuestion () {
       switch (step) {
@@ -89,25 +89,7 @@ export default function ItineraryGenerator() {
 
    return ( 
    <> 
-    {step <=3 ? (
-      <div className="roboto-mono-1">
-        <h4 color="primary">{getNextStepQuestion()}</h4>
-        <textarea
-        value={userData[step-1]}
-        onChange={(e)=>handleChange(e)}
-        cols={50}
-        rows={10}
-        />
-        <div>
-        <button onClick={handleUpdateUserData}>Next</button>
-        </div>
-      </div>
-    ):(
-      <div>
-      <button onClick={itineraryGenerator}>Generate Itinerary</button>
-      <p>{generatedItinerary}</p>
-    </div>
-    )}
+    <h4 className="space-mono-bold-italic">Work in progress...</h4>
     </>
     
     )

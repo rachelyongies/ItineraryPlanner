@@ -4,11 +4,14 @@ import '../App.css'
 export default function ItineraryGenerator() {
 
     const [step, setStep] = useState(1);
+
     const [userData, setUserData] = useState({
       country: "",
       adjective: "",
       period: ""
     });
+
+    const [inputValue, setInputValue] = useState("");
 
     const [country, setCountry] = useState("");
     const [period, setPeriod] = useState("");
@@ -18,14 +21,15 @@ export default function ItineraryGenerator() {
     const [generatedItinerary, setGeneratedItinerary] = useState("");
     
     //insert your own API_KEY here 
-    const API_KEY = '';
+
+    const API_KEY = ""
 
     function getNextStepQuestion () {
       switch (step) {
         case 1:
-          return "Which country are you planning to visit? Include any specific cities";
+          return "Where are we going?";
         case 2:
-          return "What kind of trip is it? (Solo, Adventurous, Sea activity, Family etc.)?";
+          return "What kind of trip is it?";
         case 3:
           return "How long will you be staying? Please indicate measurement of time (weeks, months, days..?) ";
         default:
@@ -33,8 +37,10 @@ export default function ItineraryGenerator() {
       }
     };
 
+
     const handleChange = (event) => {
       const newValue = event.target.value;
+      setInputValue(newValue);
       if (step===1) {
         setCountry(newValue)
       } else if (step===2) {
@@ -51,11 +57,10 @@ export default function ItineraryGenerator() {
         period: period
       })
       setStep(prevStep => prevStep+1)
+      setInputValue("")
     }
 
     async function itineraryGenerator () {
-
-        // const { country, adjective, period } = userData;
 
         const APIbody = {
 
@@ -67,7 +72,7 @@ export default function ItineraryGenerator() {
               },
             ],
             "temperature": 0.7,
-            "max_tokens": 2000,
+            "max_tokens": 2048, //max number of tokens for gpt 3.5 turbo 
             "top_p": 1
           
         }
@@ -94,7 +99,7 @@ export default function ItineraryGenerator() {
       <div className="roboto-mono-1">
         <h4 color="primary">{getNextStepQuestion()}</h4>
         <textarea
-        value={userData[step-1]}
+        value={inputValue}
         onChange={(e)=>handleChange(e)}
         cols={50}
         rows={10}
@@ -104,9 +109,12 @@ export default function ItineraryGenerator() {
         </div>
       </div>
     ):(
-      <div>
-      <button onClick={itineraryGenerator}>Generate Itinerary</button>
+      <div className="roboto-mono-1">
+
       <p className="space-mono-regular">{generatedItinerary}</p>
+
+      {(userData) ? <button onClick={itineraryGenerator}>Generate Itinerary</button> : null} 
+
     </div>
     )}
     </>

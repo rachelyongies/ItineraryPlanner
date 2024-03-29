@@ -6,7 +6,7 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-  background-image: url("../src/assets/neom-9hWJs7iblh8-unsplash.jpg");
+  background-image: url("../src/assets/emiliano-bar-kheTI8pIywU-unsplash.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   
@@ -48,6 +48,10 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  margin-left: 20px;
 }
 button:hover {
   border-color: #646cff;
